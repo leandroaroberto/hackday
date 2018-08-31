@@ -4,7 +4,7 @@ function eugenio()
 {
     $.ajax({
 		type: "GET",
-		url: "/eugenio/getData",
+		url: "eugenio/getData",
 		//data: $('#form').serialize(),
 		success: function(result) {			
 			$("#tabela1").html(result);						
