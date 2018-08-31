@@ -112,4 +112,17 @@ class HackController extends Controller
     {
         //
     }
+
+
+    public function getDataEugenio(){
+        //acessa api do eugenio
+
+        //pega os dados
+
+        //renderiza para a tabela
+
+        return "Dados da Api do Eugenio: ". rand(100,2);
+
+    }
+
 }

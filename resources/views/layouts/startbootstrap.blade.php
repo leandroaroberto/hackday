@@ -100,9 +100,12 @@
     <!-- Morris Charts JavaScript -->
     <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/raphael/raphael.min.js')}}"></script>
     <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/morrisjs/morris.min.js')}}"></script>
-    <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/data/morris-data.js')}}"></script>
+    {{--<script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/data/morris-data.js')}}"></script>--}}
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/dist/js/sb-admin-2.js')}}"></script>
+
+    <script src="{{ asset('js/hack.js') }}"></script>
+
 
 </body>
 </html>

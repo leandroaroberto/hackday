@@ -1,6 +1,6 @@
 <?php
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
+//use GuzzleHttp\Exception\GuzzleException;
+//use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +13,18 @@ use GuzzleHttp\Client;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/','HackController@index')->middleware('auth');
 
 Route::get('/bootstrap',function(){
     return redirect('/startbootstrap-sb-admin-2-gh-pages/index.html');
 });
+
+//Retorna os dados da API do Eugenio
+Route::get('/eugenio/getData','HackController@getDataEugenio');
+
+
 
 
 /**
@@ -37,7 +36,7 @@ Route::get('/bootstrap',function(){
  * https://stackoverflow.com/questions/42822951/post-request-works-with-postman-but-not-with-guzzle
  * https://gist.github.com/odan/07c110028111647ee9615ae85cb7e71d
  */
-Route::get('/eugenio', function () {
+/*Route::get('/eugenio', function () {
 //    return view('welcome');
     try {
         $client = new Client(); //GuzzleHttp\Client
@@ -68,4 +67,4 @@ Route::get('/eugenio', function () {
 //// 'application/json; charset=utf8'
 // {"type":"User"...'
     //
-});
+});*/
