@@ -39,11 +39,11 @@ class HackController extends Controller
 
             $responde = $res->getBody();
             $arrayDecoded = json_decode($responde);
-            //$cleanedArray = $this->removeDuplicities($arrayDecoded);
+            $cleanedArray = $this->removeDuplicities($arrayDecoded);
 
             
 
-            return $arrayDecoded;
+            return $cleanedArray;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -63,7 +63,9 @@ class HackController extends Controller
             $responde = $res->getBody();
             $arrayDecoded = json_decode($responde,true);
 
-            return $arrayDecoded;
+            $cleanedArray = $this->removeDuplicities($arrayDecoded);
+
+            return $cleanedArray;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -159,7 +161,14 @@ class HackController extends Controller
     private function removeDuplicities($array)
     {
 
-        $cleaned = array_unique($array);
+        // $data= json_decode( json_encode($array), true);
+
+        // dd($data);
+        // $cleaned = array_unique($data);
+        
+
+        $cleaned = array_unique($array, SORT_REGULAR);
+
 
         return $cleaned;
 
