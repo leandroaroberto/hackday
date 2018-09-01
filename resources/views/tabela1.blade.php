@@ -24,8 +24,7 @@
         <td>{{$dado->pais}}</td> 
         <td>{{$dado->lat}}</td> 
         <td>{{$dado->lng}}</td>         
-        {{--<td>{{$dado->situacao}}</td>--}}
-        <td>{{$dado->situacao ? 'ok': 'erro'}}</td>
+        <td>@if($dado->situacao==0)<span class="label label-default">{{'Inativo'}}</span>@else<span class="label label-success">{{'Ativo'}}</span>@endif</td> 
       </tr>
     @endforeach
     </tbody>
