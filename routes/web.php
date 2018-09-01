@@ -16,7 +16,8 @@
 Auth::routes();
 
 Route::get('/','HackController@index')->middleware('auth');
-Route::get('/site/{id}','HackController@edit')->middleware('auth');
+Route::get('/site/{id}','HackController@edit')->middleware('auth')->name('site');
+//Route::post('/site','HackController@edit')->middleware('auth')->name('site');
 
 
 Route::get('/bootstrap',function(){
@@ -25,7 +26,9 @@ Route::get('/bootstrap',function(){
 
 //Retorna os dados da API do Eugenio
 Route::get('/eugenio/getData','HackController@getDataEugenio');
+Route::get('/site/eugenio/getdatasite/{id?}','HackController@getDataSite');
 
+//Route::get('/eugenio')
 
 
 

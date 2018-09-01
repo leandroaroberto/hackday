@@ -104,7 +104,11 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/dist/js/sb-admin-2.js')}}"></script>
 
-    <script src="{{ asset('js/hack.js') }}"></script>
+  
+
+    @stack('webservice') 
+    
+
 
 
 </body>

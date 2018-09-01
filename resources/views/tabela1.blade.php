@@ -14,9 +14,12 @@
       </tr>
     </thead>
     <tbody>
-    @foreach($dados as $dado)
+      @foreach($dados as $dado)      
+      {{--  {!! Form::open(array('route' => 'site','method'=>'POST')) !!}    --}}
       <tr>
+        {{--  {{ Form::hidden('id','', ['id'=> $dado->id]) }}  --}}
         <td><a href="site/{{$dado->id}}">{{$dado->id}}</a></td>
+       
         <td>{{$dado->nome}}</td>   
         <td>{{$dado->logradouro}}</td>  
         <td>{{$dado->cidade}}</td> 
@@ -25,7 +28,9 @@
         <td>{{$dado->lat}}</td> 
         <td>{{$dado->lng}}</td>         
         <td>@if($dado->situacao==0)<span class="label label-default">{{'Inativo'}}</span>@else<span class="label label-success">{{'Ativo'}}</span>@endif</td> 
+     
       </tr>
+      {{--  {!! Form::close() !!}  --}}
     @endforeach
     </tbody>
 </table>
