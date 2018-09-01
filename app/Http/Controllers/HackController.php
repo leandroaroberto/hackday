@@ -77,10 +77,13 @@ class HackController extends Controller
 //        }
 //    }
 
-    public function getSites()
+    public function getSites($where = null)
     {
         try {
-            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_sites';
+
+            $schema = 'sites';
+            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_' . $schema;
+            $query = $where != null ? $query . $where : $query;
 
             $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
             $res = $client->request('GET', 'v1/data/query?apikey=' . self::API_KEY . '&sql=' . $query, [
@@ -95,10 +98,12 @@ class HackController extends Controller
         }
     }
 
-    public function getSite($id)
+    public function getSite($where = null)
     {
         try {
             $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_sites_id';
+
+            $query = $where != null ? $query . $where : $query;
 
             $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
             $res = $client->request('GET', 'v1/data/query?apikey=' . self::API_KEY . '&sql=' . $query, [
