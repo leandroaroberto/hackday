@@ -41,6 +41,7 @@ class HackController extends Controller
 
             $responde = $res->getBody();
             $arrayDecoded = json_decode($responde);
+            $cleanedArray = $this->removeDuplicities($arrayDecoded);
 
             return $arrayDecoded;
         } catch (\Exception $e) {
@@ -139,20 +140,18 @@ class HackController extends Controller
     public function getDataEugenio()
     {
         $dados = $this->getSites();        
+        $dados_equipamentos = $this->getSite();
         $tabela = view("tabela1",compact('dados'))->render();
         return $tabela;
     }
 
     private function removeDuplicities($array)
     {
-        $cleaned = [];
 
-        // dd($array);
+        $cleaned = array_unique($array);
 
-        foreach($array as $data){
-            var_dump($data);
-        }
-        exit;
+        return $cleaned;
+
 
     }
 
