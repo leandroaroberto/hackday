@@ -16,6 +16,8 @@
 Auth::routes();
 
 Route::get('/','HackController@index')->middleware('auth');
+Route::get('/site/{id}','HackController@edit')->middleware('auth');
+
 
 Route::get('/bootstrap',function(){
     return redirect('/startbootstrap-sb-admin-2-gh-pages/index.html');

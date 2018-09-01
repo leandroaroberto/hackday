@@ -16,7 +16,7 @@
     <tbody>
     @foreach($dados as $dado)
       <tr>
-        <td>{{$dado->id}}</td>
+        <td><a href="site/{{$dado->id}}">{{$dado->id}}</a></td>
         <td>{{$dado->nome}}</td>   
         <td>{{$dado->logradouro}}</td>  
         <td>{{$dado->cidade}}</td> 

@@ -109,7 +109,7 @@ class HackController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('site');
     }
 
     /**
