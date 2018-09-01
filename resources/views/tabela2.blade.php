@@ -2,7 +2,6 @@
     <thead>
       <tr>
         <th scope="col">Nome</th>
-        <th scope="col">Status</th>
         <th scope="col">Consumo</th>
         <th scope="col">Conexão</th>
         <th scope="col">Obs</th>        
@@ -12,7 +11,6 @@
       @foreach($dados as $dado)      
       <tr>
         <td>{{$dado['nome']}}</td>       
-        <td>{{$dado['status']}}</td>           
         <td>          
             @if($dado['consumo'] <= 50 )<span class="label label-default">{{'Desligado'}}</span>@endif
          @if($dado['consumo'] > 50 AND $dado['consumo'] <= 100 )<span class="label label-warning">{{'Atenção'}} </span>&nbsp; {{$dado['consumo'] .' Kwh' }}@endif
