@@ -21,70 +21,20 @@ class HackController extends Controller
     {
         //$token = $this->getSites();        
         //return view('index')->with(['token' => $token]);
+        $result = $this->getSites();
+
+        //$novo_array = $this->removeDuplicities($result);
+        //dd($result);
         return view('index');
     }
-
-    /*private function getToken(){
-
-        try {
-            $token = null;
-            $headers = [
-                'Accept' => 'application/json',
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json',
-            ];
-            $client = new Client(['base_uri' => 'https://portal.dev.eugenio.swlogicalis.com/api/']);
-            $res = $client->request('POST', 'v1/auth/', [
-                'headers' => $headers,
-                'json' => [
-                    'username' => 'famorim@artit.com.br',
-                    'password' => 'Artit@123',
-                    'tenant' => 'artit',
-                ],
-            ]);
-            
-            $responde = $res->getBody();
-            $arrayDecoded = json_decode($responde);
-            return $arrayDecoded->access_token;
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }*/
-
-
-//    public function getToken(){
-//
-//        try {
-//            $token = null;
-//            $headers = [
-//                'Accept' => 'application/json',
-//                'Authorization' => 'Bearer ' . $token,
-//                'Content-Type' => 'application/json',
-//            ];
-//
-//
-//            $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
-//            $res = $client->request('GET', 'v1/data/query?apikey=1BkpLh7hc5O8XIEuJHMPZFnhdaG1slLu&sql=SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_teste', [
-//            ]);
-//
-//            $responde = $res->getBody();
-//            $arrayDecoded = json_decode($responde);
-//            //dd($arrayDecoded);
-//            return $arrayDecoded;
-//            //return $arrayDecoded->access_token;
-//        } catch (\Exception $e) {
-//            return $e->getMessage();
-//        }
-//    }
 
     public function getSites($where = null)
     {
         try {
 
-            $schema = 'sites';
-            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_' . $schema;
+            $schema = 'sites';  
+            $query = 'SELECT%20distinct%28nome%29%2C%20id%2C%20logradouro%2C%20cidade%2C%20estado%2C%20pais%2C%20lat%2C%20lng%2C%20situacao%20FROM%20hackday_time3_sandbox.v_'.$schema;
             $query = $where != null ? $query . $where : $query;
-
             $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
             $res = $client->request('GET', 'v1/data/query?apikey=' . self::API_KEY . '&sql=' . $query, [
             ]);
@@ -188,11 +138,22 @@ class HackController extends Controller
 
     public function getDataEugenio()
     {
-        //return "Dados da Api do Eugenio: " . rand(100, 2);
-        $dados = $this->getSites();
-        //dd($dados);
+        $dados = $this->getSites();        
         $tabela = view("tabela1",compact('dados'))->render();
         return $tabela;
+    }
+
+    private function removeDuplicities($array)
+    {
+        $cleaned = [];
+
+        // dd($array);
+
+        foreach($array as $data){
+            var_dump($data);
+        }
+        exit;
+
     }
 
 }

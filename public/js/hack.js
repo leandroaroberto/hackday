@@ -10,7 +10,8 @@ function eugenio()
 		type: "GET",
 		url: "eugenio/getData",
 		//data: $('#form').serialize(),
-		success: function(result) {			
+		success: function(result) {	
+            //$("#tabela1").html('');								
 			$("#tabela1").html(result);						
 		},
 		/*beforeSend: function () {
