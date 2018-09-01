@@ -19,11 +19,9 @@ class HackController extends Controller
      */
     public function index()
     {
-
-
-        $token = $this->getSites();
-        //dd($token);
-        return view('index')->with(['token' => $token]);
+        //$token = $this->getSites();        
+        //return view('index')->with(['token' => $token]);
+        return view('index');
     }
 
     /*private function getToken(){
@@ -82,7 +80,7 @@ class HackController extends Controller
     public function getSites()
     {
         try {
-            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_teste';
+            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_sites';
 
             $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
             $res = $client->request('GET', 'v1/data/query?apikey=' . self::API_KEY . '&sql=' . $query, [
@@ -100,7 +98,7 @@ class HackController extends Controller
     public function getSite($id)
     {
         try {
-            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_teste';
+            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_sites_id';
 
             $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
             $res = $client->request('GET', 'v1/data/query?apikey=' . self::API_KEY . '&sql=' . $query, [
@@ -185,14 +183,11 @@ class HackController extends Controller
 
     public function getDataEugenio()
     {
-        //acessa api do eugenio
-
-        //pega os dados
-
-        //renderiza para a tabela
-
-        return "Dados da Api do Eugenio: " . rand(100, 2);
-
+        //return "Dados da Api do Eugenio: " . rand(100, 2);
+        $dados = $this->getSites();
+        //dd($dados);
+        $tabela = view("tabela1",compact('dados'))->render();
+        return $tabela;
     }
 
 }
