@@ -17,10 +17,11 @@ class HackController extends Controller
     public function index()
     {
         $token = $this->getToken();
+        //dd($token);
         return view('index')->with(['token' => $token]);
     }
 
-    private function getToken(){
+    /*private function getToken(){
 
         try {
             $token = null;
@@ -42,6 +43,32 @@ class HackController extends Controller
             $responde = $res->getBody();
             $arrayDecoded = json_decode($responde);
             return $arrayDecoded->access_token;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }*/
+
+
+    public function getToken(){
+
+        try {
+            $token = null;
+            $headers = [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json',
+            ];           
+            
+
+            $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
+            $res = $client->request('GET', 'v1/data/query?apikey=1BkpLh7hc5O8XIEuJHMPZFnhdaG1slLu&sql=SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_teste', [
+            ]);
+            
+            $responde = $res->getBody();
+            $arrayDecoded = json_decode($responde);
+            //dd($arrayDecoded);
+            return $arrayDecoded;
+            //return $arrayDecoded->access_token;
         } catch (\Exception $e) {
             return $e->getMessage();
         }

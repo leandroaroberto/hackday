@@ -1,4 +1,4 @@
-var tempo = window.setInterval(eugenio, 1000);
+//var tempo = window.setInterval(eugenio, 1000);
 
 function eugenio()
 {

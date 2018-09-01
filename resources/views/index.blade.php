@@ -10,7 +10,7 @@
     <div class="col-lg-12">
         Hack Day!
         <p>This is the Eugenio Token:</p>
-        <p>{{$token}}</p>
+        @include('tabela1');
     </div>
 </div>
 <hr />
