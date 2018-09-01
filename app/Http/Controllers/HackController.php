@@ -19,7 +19,9 @@ class HackController extends Controller
      */
     public function index()
     {
-        $token = $this->getToken();
+
+
+        $token = $this->getSites();
         //dd($token);
         return view('index')->with(['token' => $token]);
     }
@@ -79,18 +81,17 @@ class HackController extends Controller
 
     public function getSites()
     {
-
         try {
+            $query = 'SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_teste';
 
             $client = new Client(['base_uri' => 'https://portal.stg.eugenio.io/api/']);
-            $res = $client->request('GET', 'v1/data/query?apikey=' . self::API_KEY . '&sql=SELECT%20%2A%20FROM%20hackday_time3_sandbox.v_teste', [
+            $res = $client->request('GET', 'v1/data/query?apikey=' . self::API_KEY . '&sql=' . $query, [
             ]);
 
             $responde = $res->getBody();
             $arrayDecoded = json_decode($responde);
-            //dd($arrayDecoded);
+
             return $arrayDecoded;
-            //return $arrayDecoded->access_token;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
