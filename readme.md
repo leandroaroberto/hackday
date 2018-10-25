@@ -13,4 +13,8 @@ This application is only for study purposes.
 - Felipe Amorim
 - Leandro Roberto
 - Paulo Santos
-- Ricardo Moura
+- Ricardo Rodrigues de Moura
+
+## Competition result
+
+We won the third place award as the best company project.
